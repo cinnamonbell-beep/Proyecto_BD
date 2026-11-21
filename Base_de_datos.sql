@@ -55,3 +55,26 @@ CREATE TABLE products (
     FOREIGN KEY (brand_id) REFERENCES brands(brand_id),
     FOREIGN KEY (supplier_id) REFERENCES suppliers(supplier_id)
 );
+
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE sales (
+    sales_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_id INT NOT NULL,
+    employee_id INT NOT NULL,
+    register_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    total DECIMAL(10, 2) NOT NULL,
+    sale_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (employee_id) REFERENCES employees(id_employee),
+    FOREIGN KEY (register_id) REFERENCES cash_registers(register_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
