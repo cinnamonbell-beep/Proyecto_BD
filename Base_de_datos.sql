@@ -30,3 +30,28 @@ CREATE TABLE categories (
     category_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL UNIQUE
 );
+
+CREATE TABLE brands (
+    brand_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE suppliers (
+    supplier_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    stock INT NOT NULL,
+    category_id INT NOT NULL,
+    brand_id INT NOT NULL,
+    supplier_id INT NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES categories(category_id),
+    FOREIGN KEY (brand_id) REFERENCES brands(brand_id),
+    FOREIGN KEY (supplier_id) REFERENCES suppliers(supplier_id)
+);
