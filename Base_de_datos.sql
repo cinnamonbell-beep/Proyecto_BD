@@ -78,3 +78,12 @@ CREATE TABLE sales (
     FOREIGN KEY (register_id) REFERENCES cash_registers(register_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
+
+CREATE TABLE IF NOT EXISTS roles (
+    role_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL UNIQUE
+);
+
+INSERT INTO roles (name)
+VALUES ('administracion'), ('usuario'), ('analista');
