@@ -279,6 +279,51 @@ END //
 DELIMITER ;
 
 -- products
+DELIMITER //
+CREATE PROCEDURE sp_GetProducts()
+BEGIN
+    SELECT * FROM products;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_GetProductById(IN productId INT)
+BEGIN
+    SELECT * FROM products WHERE product_id = productId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_InsertProduct(IN productName VARCHAR(100), IN productPrice DECIMAL(10, 2), IN productStock INT, IN categoryId INT, IN brandId INT, IN supplierId INT)
+BEGIN
+    INSERT INTO products (name, price, stock, category_id, brand_id, supplier_id) 
+    VALUES (productName, productPrice, productStock, categoryId, brandId, supplierId);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_UpdateProduct(IN productId INT, IN productName VARCHAR(100), IN productPrice DECIMAL(10, 2), IN productStock INT, 
+IN categoryId INT, IN brandId INT, IN supplierId INT)
+BEGIN
+    UPDATE products 
+    SET name = productName, price = productPrice, stock = productStock, category_id = categoryId, brand_id = brandId, supplier_id = supplierId 
+    WHERE product_id = productId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteProduct(IN productId INT)
+BEGIN
+    DELETE FROM products WHERE product_id = productId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteAllProducts()
+BEGIN
+    DELETE FROM products;
+END //
+DELIMITER ;
 -- customers
 -- sales
 
