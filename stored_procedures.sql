@@ -191,8 +191,48 @@ END //
 DELIMITER ;
 
 
+-- brands
+DELIMITER //
+CREATE PROCEDURE sp_GetBrands()
+BEGIN
+    SELECT * FROM brands;
+END //
+DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE sp_GetBrandById(IN brandId INT)
+BEGIN
+    SELECT * FROM brands WHERE brand_id = brandId;
+END //
+DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE sp_InsertBrand(IN brandName VARCHAR(100))
+BEGIN
+    INSERT INTO brands (name) VALUES (brandName);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_UpdateBrand(IN brandId INT, IN brandName VARCHAR(100))
+BEGIN
+    UPDATE brands SET name = brandName WHERE brand_id = brandId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteBrand(IN brandId INT)
+BEGIN
+    DELETE FROM brands WHERE brand_id = brandId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteAllBrands()   
+BEGIN
+    DELETE FROM brands;
+END //
+DELIMITER ;
 
 
 
