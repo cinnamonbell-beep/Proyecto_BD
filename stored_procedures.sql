@@ -278,4 +278,7 @@ BEGIN
 END //
 DELIMITER ;
 
+-- products
+-- customers
+-- sales
 
