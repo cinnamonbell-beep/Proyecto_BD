@@ -109,8 +109,40 @@ BEGIN
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE sp_GetCashRegisterById(IN registerId INT)
+BEGIN
+    SELECT * FROM cash_registers WHERE register_id = registerId;
+END //
+DELIMITER ;
 
+DELIMITER//
+CREATE PROCEDURE sp_InsertCashRegister(IN registerNumber INT, IN branchId INT)
+BEGIN
+    INSERT INTO cash_registers (register_number, branch_id) VALUES (registerNumber, branchId);
+END //
+DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE sp_UpdateCashRegister(IN registerId INT, IN registerNumber INT, IN branchId INT)
+BEGIN
+    UPDATE cash_registers SET register_number = registerNumber, branch_id = branchId WHERE register_id = registerId;
+END //  
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteCashRegister(IN registerId INT)
+BEGIN
+    DELETE FROM cash_registers WHERE register_id = registerId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteAllCashRegisters()
+BEGIN
+    DELETE FROM cash_registers;
+END //
+DELIMITER ;
 
 
 
