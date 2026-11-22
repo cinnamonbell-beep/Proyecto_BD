@@ -235,6 +235,47 @@ END //
 DELIMITER ;
 
 
+-- suppliers
+DELIMITER //
+CREATE PROCEDURE sp_GetSuppliers()
+BEGIN
+    SELECT * FROM suppliers;
+END //
+DELIMITER ;
 
+DELIMITER // 
+CREATE PROCEDURE sp_GetSupplierById(IN supplierId INT)
+BEGIN
+    SELECT * FROM suppliers WHERE supplier_id = supplierId;
+END //
+DELIMITER ;
+
+DELIMITER // 
+CREATE PROCEDURE sp_InsertSupplier(IN supplierName VARCHAR(50), IN supplierPhone VARCHAR(20), IN supplierEmail VARCHAR(50))
+BEGIN   
+    INSERT INTO suppliers (name, phone, email) VALUES (supplierName, supplierPhone, supplierEmail);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_UpdateSupplier(IN supplierId INT, IN supplierName VARCHAR(50), IN supplierPhone VARCHAR(20), IN supplierEmail VARCHAR(50))
+BEGIN   
+    UPDATE suppliers SET name = supplierName, phone = supplierPhone, email = supplierEmail WHERE supplier_id = supplierId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteSupplier(IN supplierId INT)
+BEGIN
+    DELETE FROM suppliers WHERE supplier_id = supplierId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteAllSuppliers()    
+BEGIN
+    DELETE FROM suppliers;
+END //
+DELIMITER ;
 
 
