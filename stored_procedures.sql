@@ -146,6 +146,54 @@ DELIMITER ;
 
 
 
+-- categories
+DELIMITER //
+CREATE PROCEDURE sp_GetCategories()
+BEGIN
+    SELECT * FROM categories;
+END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE sp_GetCategoryById(IN categoryId INT)
+BEGIN
+    SELECT * FROM categories WHERE category_id = categoryId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_InsertCategory(IN categoryName VARCHAR(100))
+BEGIN
+    INSERT INTO categories (name) VALUES (categoryName);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_UpdateCategory(IN categoryId INT, IN categoryName VARCHAR(100))
+BEGIN
+    UPDATE categories SET name = categoryName WHERE category_id = categoryId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteCategory(IN categoryId INT)
+BEGIN
+    DELETE FROM categories WHERE category_id = categoryId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteAllCategories()
+BEGIN 
+    DELETE FROM categories;
+END //
+DELIMITER ;
+
+
+
+
+
 
 
 
