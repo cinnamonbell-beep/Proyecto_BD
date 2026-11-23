@@ -324,6 +324,95 @@ BEGIN
     DELETE FROM products;
 END //
 DELIMITER ;
--- customers
--- sales
 
+-- customers
+DELIMITER //
+CREATE PROCEDURE sp_GetCustomers()
+BEGIN
+    SELECT * FROM customers;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_GetCustomerById(IN customerId INT)
+BEGIN
+    SELECT * FROM customers WHERE customer_id = customerId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_InsertCustomer(IN firstName VARCHAR(100), IN lastName VARCHAR(50), IN customerPhone VARCHAR(20), IN customerEmail VARCHAR(50))
+BEGIN
+    INSERT INTO customers (first_name, last_name, phone, email)
+    VALUES (firstName, lastName, customerPhone, customerEmail);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_UpdateCustomer(IN customerId INT, IN firstName VARCHAR(100), IN lastName VARCHAR(50), IN customerPhone VARCHAR(20), IN customerEmail VARCHAR(50))
+BEGIN
+    UPDATE customers 
+    SET first_name = firstName, last_name = lastName, phone = customerPhone, email = customerEmail 
+    WHERE customer_id = customerId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteCustomer(IN customerId INT)
+BEGIN
+    DELETE FROM customers WHERE customer_id = customerId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteAllCustomers()
+BEGIN
+    DELETE FROM customers;
+END //
+DELIMITER ;
+
+-- sales
+DELIMITER //
+CREATE PROCEDURE sp_GetSales()
+BEGIN
+    SELECT * FROM sales;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_GetSaleById(IN saleId INT)
+BEGIN
+    SELECT * FROM sales WHERE sales_id = saleId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_InsertSale(IN customerId INT, IN employeeId INT, IN registerId INT, IN productId INT, IN saleQuantity INT, IN saleTotal DECIMAL(10, 2))
+BEGIN
+    INSERT INTO sales (customer_id, employee_id, register_id, product_id, quantity, total)
+    VALUES (customerId, employeeId, registerId, productId, saleQuantity, saleTotal);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_UpdateSale(IN saleId INT, IN customerId INT, IN employeeId INT, IN registerId INT, IN productId INT, IN saleQuantity INT, IN saleTotal DECIMAL(10, 2))
+BEGIN
+    UPDATE sales 
+    SET customer_id = customerId, employee_id = employeeId, register_id = registerId, product_id = productId, quantity = saleQuantity, total = saleTotal 
+    WHERE sales_id = saleId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteSale(IN saleId INT)
+BEGIN
+    DELETE FROM sales WHERE sales_id = saleId;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteAllSales()
+BEGIN
+    DELETE FROM sales;
+END //
+DELIMITER ;
