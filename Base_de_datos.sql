@@ -87,3 +87,9 @@ CREATE TABLE IF NOT EXISTS roles (
 
 INSERT INTO roles (name)
 VALUES ('administracion'), ('usuario'), ('analista');
+
+INSERT INTO branches (name, address, phone)
+VALUES 
+('Sucursal Centro', 'Av. Revolución 1317, Zona Centro, 22000 Tijuana, B.C.', '664-123-45-67'),
+('Sucursal Playas', 'P.º Ensenada 1162, Playas de Tijuana, Sección Jardines, 22500 Tijuana, B.C.', '664-505-11-22'),
+('Sucursal Otay', 'Calz del Tecnológico 15300-101, Altabrisa, 22420 Tijuana, B.C.', '664-340-22-33');
