@@ -9,6 +9,3 @@ CREATE TRIGGER Log_insert_Products
     FOR EACH ROW
     INSERT INTO logs (entity, dates, actions, role_name)
     VALUES ('products', NOW(), 'INSERT', @role_name);
-
-
-
