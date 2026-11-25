@@ -86,8 +86,7 @@ CREATE TABLE IF NOT EXISTS logs (
     actions VARCHAR(100)
 );
 
-
-
+ALTER TABLE logs ADD COLUMN role_name VARCHAR(50);
 
 
 INSERT INTO branches (name, address, phone)
