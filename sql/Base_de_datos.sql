@@ -88,6 +88,7 @@ CREATE TABLE logs (
 );
 
 
+
 INSERT INTO branches (name, address, phone)
 VALUES 
 ('Centro branch', 'Av. Revolución 1317, Zona Centro, 22000 Tijuana, B.C.', '6641234567'),
@@ -106,10 +107,11 @@ INSERT INTO cash_registers (register_number, branch_id) VALUES
 (1, 1), (2, 1),
 (1, 2), (2, 2),
 (1, 3), (2, 3);
-
+SELECT category_id, name FROM categories;
 INSERT INTO categories (name) VALUES
 ('Beverages'), ('Snacks'), ('Dairy'), ('Bakery'), ('Cleaning'), ('Groceries'), ('Personal Care');
 
+select * from categories;
 INSERT INTO brands (name) VALUES
 ('Coca-Cola'), ('Sabritas'), ('Lala'), ('Bimbo'), ('Ariel'),
 ('Gamesa'), ('Nestlé'), ('Colgate'), ('Zote'), ('Pantene');
@@ -142,6 +144,7 @@ INSERT INTO products (name, price, stock, category_id, brand_id, supplier_id) VA
 ('Cookies family pack', 48.00,  50, 6,  6,  6),
 ('Toothpaste 75 ml', 32.00,  45, 7,  8,  8),
 ('Pantene shampoo', 70.00,  60, 7, 10, 10);
+
 
 INSERT INTO customers (first_name, last_name, phone, email) VALUES
 ('Laura', 'Gómez', '6644441111', 'laura.gomez@gmail.com'),

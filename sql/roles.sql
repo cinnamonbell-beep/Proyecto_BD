@@ -17,4 +17,5 @@ CREATE USER 'isabella_ruelas'@'localhost' IDENTIFIED BY 'isa123';
 GRANT 'administracion' TO 'karla_rodriguez'@'localhost';
 GRANT 'usuario' TO 'isabella_ruelas'@'localhost';
 
+SET DEFAULT ROLE ALL TO 'karla_rodriguez'@'localhost', 'isabella_ruelas'@'localhost';
 
