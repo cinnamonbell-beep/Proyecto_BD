@@ -79,14 +79,16 @@ CREATE TABLE sales (
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
-
-CREATE TABLE IF NOT EXISTS roles (
-    role_id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL UNIQUE
+CREATE TABLE IF NOT EXISTS logs (
+    log_id INT PRIMARY KEY AUTO_INCREMENT,
+    entity VARCHAR(100) NOT NULL,
+    dates DATETIME DEFAULT CURRENT_TIMESTAMP,
+    actions VARCHAR(100)
 );
 
-INSERT INTO roles (name)
-VALUES ('administracion'), ('usuario'), ('analista');
+
+
+
 
 INSERT INTO branches (name, address, phone)
 VALUES 
@@ -174,3 +176,5 @@ INSERT INTO sales (customer_id, employee_id, register_id, product_id, quantity, 
 (8, 4, 4,  5, 3,  78.00, '2026-11-07 15:35:00'),
 (3, 5, 5,  9, 1,  55.00, '2026-11-11 09:00:00'),
 (5, 6, 6,  3, 5,  80.00, '2026-11-15 17:55:00');
+
+
