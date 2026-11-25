@@ -1,4 +1,4 @@
--- Generate a monthly sales report showing number of sales, units sold and total amount pero month 
+-- Generate a monthly sales report showing total sales, units sold and total amount per month 
 
 CREATE VIEW vw_monthly_sales AS
 SELECT
