@@ -1,13 +1,20 @@
 Use GroceryStore;
-
+-- Roles
 CREATE ROLE 'administracion';
 CREATE ROLE 'usuario';
 CREATE ROLE 'analista';
 
+-- Permisos 
+GRANT ALL ON GroceryStore.* TO 'administracion';
+GRANT ALL ON GroceryStore.* TO 'usuario';
+GRANT ALL ON GroceryStore.* TO 'analista';
 
-CREATE TRIGGER Log_insert_Products
-    AFTER INSERT ON products
-    FOR EACH ROW
-    INSERT INTO logs (entity, dates, actions, role_name)
-    VALUES ('products', NOW(), 'INSERT', @role_name);
+-- Usuarios
+CREATE USER 'karla_rodriguez'@'localhost' IDENTIFIED BY 'karla123';
+CREATE USER 'isabella_ruelas'@'localhost' IDENTIFIED BY 'isa123';
+
+-- Asignación de roles a usuarios
+GRANT 'administracion' TO 'karla_rodriguez'@'localhost';
+GRANT 'usuario' TO 'isabella_ruelas'@'localhost';
+
 
