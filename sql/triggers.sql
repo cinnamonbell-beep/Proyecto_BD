@@ -121,4 +121,29 @@ BEGIN
     VALUES ('sales', 'DELETE', USER());
 END//
 
+-- cash_registers
+CREATE TRIGGER Log_insert_cash_registers
+AFTER INSERT ON cash_registers
+FOR EACH ROW
+BEGIN
+    INSERT INTO logs (entity, actions, role_name)
+    VALUES ('cash_registers', 'INSERT', USER());
+END//
+
+CREATE TRIGGER Log_update_cash_registers
+AFTER UPDATE ON cash_registers
+FOR EACH ROW
+BEGIN
+    INSERT INTO logs (entity, actions, role_name)
+    VALUES ('cash_registers', 'UPDATE', USER());
+END//
+
+CREATE TRIGGER Log_delete_cash_registers
+AFTER DELETE ON cash_registers
+FOR EACH ROW
+BEGIN
+    INSERT INTO logs (entity, actions, role_name)
+    VALUES ('cash_registers', 'DELETE', USER());
+END//
+
 
