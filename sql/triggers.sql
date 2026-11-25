@@ -147,7 +147,6 @@ BEGIN
 END//
 
 -- categories
-
 CREATE TRIGGER Log_insert_categories
 AFTER INSERT ON categories
 FOR EACH ROW
@@ -158,7 +157,7 @@ END//
 
 CREATE TRIGGER Log_update_categories
 AFTER UPDATE ON categories
-FORO EACH ROW
+FOR EACH ROW
 BEGIN
     INSERT INTO logs (entity, actions, role_name)
     VALUES ('categories', 'UPDATE', USER());
@@ -170,5 +169,55 @@ FOR EACH ROW
 BEGIN
     INSERT INTO logs (entity, actions, role_name)
     VALUES ('categories', 'DELETE', USER());
+END//
+
+-- brands
+CREATE TRIGGER Log_insert_brands
+AFTER INSERT ON brands
+FOR EACH ROW
+BEGIN
+    INSERT INTO logs (entity, actions, role_name)
+    VALUES ('brands', 'INSERT', USER());
+END//
+
+CREATE TRIGGER Log_update_brands
+AFTER UPDATE ON brands
+FOR EACH ROW
+BEGIN
+    INSERT INTO logs (entity, actions, role_name)
+    VALUES ('brands', 'UPDATE', USER());
+END//
+
+CREATE TRIGGER Log_delete_brands
+AFTER DELETE ON brands
+FOR EACH ROW
+BEGIN
+    INSERT INTO logs (entity, actions, role_name)
+    VALUES ('brands', 'DELETE', USER());
+END//
+
+-- suppliers
+CREATE TRIGGER Log_insert_suppliers
+AFTER INSERT ON suppliers
+FOR EACH ROW
+BEGIN
+    INSERT INTO logs (entity, actions, role_name)
+    VALUES ('suppliers', 'INSERT', USER());
+END//
+
+CREATE TRIGGER Log_update_suppliers
+AFTER UPDATE ON suppliers
+FOR EACH ROW
+BEGIN
+    INSERT INTO logs (entity, actions, role_name)
+    VALUES ('suppliers', 'UPDATE', USER());
+END//
+
+CREATE TRIGGER Log_delete_suppliers
+AFTER DELETE ON suppliers
+FOR EACH ROW
+BEGIN
+    INSERT INTO logs (entity, actions, role_name)
+    VALUES ('suppliers', 'DELETE', USER());
 END//
 
