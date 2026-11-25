@@ -1,5 +1,5 @@
 CREATE DATABASE GroceryStore;
-Use GroceryStore;
+USE GroceryStore;
 
 
 CREATE TABLE branches (
@@ -42,6 +42,7 @@ CREATE TABLE suppliers (
     phone VARCHAR(20) NOT NULL,
     email VARCHAR(50) NOT NULL
 );
+
 
 CREATE TABLE products (
     product_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -107,11 +108,11 @@ INSERT INTO cash_registers (register_number, branch_id) VALUES
 (1, 1), (2, 1),
 (1, 2), (2, 2),
 (1, 3), (2, 3);
-SELECT category_id, name FROM categories;
+
 INSERT INTO categories (name) VALUES
 ('Beverages'), ('Snacks'), ('Dairy'), ('Bakery'), ('Cleaning'), ('Groceries'), ('Personal Care');
 
-select * from categories;
+
 INSERT INTO brands (name) VALUES
 ('Coca-Cola'), ('Sabritas'), ('Lala'), ('Bimbo'), ('Ariel'),
 ('Gamesa'), ('Nestlé'), ('Colgate'), ('Zote'), ('Pantene');
