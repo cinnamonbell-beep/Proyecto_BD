@@ -79,14 +79,13 @@ CREATE TABLE sales (
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
-CREATE TABLE IF NOT EXISTS logs (
+CREATE TABLE logs (
     log_id INT PRIMARY KEY AUTO_INCREMENT,
     entity VARCHAR(100) NOT NULL,
     dates DATETIME DEFAULT CURRENT_TIMESTAMP,
-    actions VARCHAR(100)
+    actions VARCHAR(100),
+    role_name VARCHAR(50)
 );
-
-ALTER TABLE logs ADD COLUMN role_name VARCHAR(50);
 
 
 INSERT INTO branches (name, address, phone)
