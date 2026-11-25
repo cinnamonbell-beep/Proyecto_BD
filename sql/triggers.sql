@@ -146,4 +146,29 @@ BEGIN
     VALUES ('cash_registers', 'DELETE', USER());
 END//
 
+-- categories
+
+CREATE TRIGGER Log_insert_categories
+AFTER INSERT ON categories
+FOR EACH ROW
+BEGIN
+    INSERT INTO logs (entity, actions, role_name)
+    VALUES ('categories', 'INSERT', USER());
+END//
+
+CREATE TRIGGER Log_update_categories
+AFTER UPDATE ON categories
+FORO EACH ROW
+BEGIN
+    INSERT INTO logs (entity, actions, role_name)
+    VALUES ('categories', 'UPDATE', USER());
+END//
+
+CREATE TRIGGER Log_delete_categories
+AFTER DELETE ON categories
+FOR EACH ROW
+BEGIN
+    INSERT INTO logs (entity, actions, role_name)
+    VALUES ('categories', 'DELETE', USER());
+END//
 
