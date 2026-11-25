@@ -1,7 +1,8 @@
-USE GroceryStore;
+Use GroceryStore;
 
--- Elegir un rol: administrator, user, analyst
-SET @role_name = 'analyst';
+CREATE ROLE 'administracion';
+CREATE ROLE 'usuario';
+CREATE ROLE 'analista';
 
 
 CREATE TRIGGER Log_insert_Products
