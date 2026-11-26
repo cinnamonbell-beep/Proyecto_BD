@@ -47,6 +47,7 @@ El script incluye datos de ejemplo: 3 sucursales, 6 empleados, 6 cajas, 7 catego
 ## Procedimientos almacenados
 Cada tabla principal tiene un conjunto de procedimientos para operar sobre ella. El nombre sigue el patrón `sp_<Acción><Entidad>`.
 | Acción | Ejemplo | Qué hace |
+|---|---|---|
 | Consultar todos | `sp_GetBranches()` | Devuelve todos los registros |
 | Consultar por id | `sp_GetBranchById(1)` | Devuelve un registro |
 | Insertar | `sp_InsertBranch(nombre, dirección, teléfono)` | Agrega un registro |
@@ -55,3 +56,18 @@ Cada tabla principal tiene un conjunto de procedimientos para operar sobre ella.
 | Eliminar todos | `sp_DeleteAllBranches()` | Borra todos los registros de la tabla |
 
 Hay procedimientos para `branches`, `employees`, `cash_registers`, `categories`, `brands`, `suppliers`, `products`, `customers` y `sales`
+
+## Auditoría con triggers
+ 
+Cada tabla tiene **3 triggers** (`AFTER INSERT`, `AFTER UPDATE` y `AFTER DELETE`), lo que da un total de **27 triggers**. 
+Cada vez que alguien modifica una tabla, el trigger guarda un registro en `logs`.
+ 
+| Columna | Contenido |
+|---|---|
+| `log_id` | Identificador del registro |
+| `entity` | Tabla afectada (por ejemplo `brands`) |
+| `dates` | Fecha y hora del cambio (se llena automáticamente) |
+| `actions` | `INSERT`, `UPDATE` o `DELETE` |
+| `role_name` | Usuario de MySQL que hizo el cambio (`USER()`) |
+ 
+Los triggers se llaman `Log_<acción>_<tabla>`, por ejemplo `Log_insert_brands`.
